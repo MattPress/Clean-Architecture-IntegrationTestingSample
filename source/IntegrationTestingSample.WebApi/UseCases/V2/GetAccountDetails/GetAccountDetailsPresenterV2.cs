@@ -3,7 +3,7 @@ namespace IntegrationTestingSample.WebApi.UseCases.V2.GetAccountDetails
     using System;
     using System.Data;
     using IntegrationTestingSample.Application.Boundaries.GetAccountDetails;
-    using IntegrationTestingSample.WebApi.ViewModels;
+    using IntegrationTestingSample.WebApi.Models.ViewModels;
     using Microsoft.AspNetCore.Mvc;
     using OfficeOpenXml;
 
@@ -31,10 +31,12 @@ namespace IntegrationTestingSample.WebApi.UseCases.V2.GetAccountDetails
 
             foreach (var item in getAccountDetailsOutput.Transactions)
             {
-                var transaction = new TransactionModel(
-                    item.Amount,
-                    item.Description,
-                    item.TransactionDate);
+                var transaction = new TransactionModel
+                {
+                    Amount = item.Amount,
+                    Description = item.Description,
+                    TransactionDate = item.TransactionDate,
+                };
 
                 dataTable.Rows.Add(new object[] { item.Amount, item.Description, item.TransactionDate });
             }

@@ -9,7 +9,7 @@ namespace IntegrationTestingSample.WebApi.Extensions
             services.AddScoped<IntegrationTestingSample.WebApi.UseCases.V2.GetAccountDetails.GetAccountDetailsPresenterV2, IntegrationTestingSample.WebApi.UseCases.V2.GetAccountDetails.GetAccountDetailsPresenterV2>();
 
             services.AddTransient(ctx =>
-                new UseCases.V2.GetAccountDetails.AccountsV2Controller(
+                new UseCases.V2.GetAccountDetails.AccountsController(
                     new Application.UseCases.GetAccountDetails(
                         ctx.GetRequiredService<IntegrationTestingSample.WebApi.UseCases.V2.GetAccountDetails.GetAccountDetailsPresenterV2>(),
                         ctx.GetRequiredService<Application.Repositories.IAccountRepository>()

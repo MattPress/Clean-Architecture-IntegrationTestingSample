@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc.Versioning;
+
 namespace IntegrationTestingSample.WebApi.Extensions
 {
     using Microsoft.Extensions.DependencyInjection;

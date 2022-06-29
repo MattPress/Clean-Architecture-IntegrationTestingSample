@@ -23,6 +23,7 @@
     <ProjectReference Include="..\IntegrationTestingSample.Domain\IntegrationTestingSample.Domain.csproj" />
     <ProjectReference Include="..\IntegrationTestingSample.Application\IntegrationTestingSample.Application.csproj" />
     <ProjectReference Include="..\IntegrationTestingSample.Infrastructure\IntegrationTestingSample.Infrastructure.csproj" />
+    <ProjectReference Include="..\IntegrationTestingSample.WebApi.Models\IntegrationTestingSample.WebApi.Models.csproj" />
   </ItemGroup>
 
 </Project>

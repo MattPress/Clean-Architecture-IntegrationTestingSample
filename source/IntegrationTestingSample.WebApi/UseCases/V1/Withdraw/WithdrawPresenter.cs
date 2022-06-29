@@ -1,6 +1,7 @@
 namespace IntegrationTestingSample.WebApi.UseCases.V1.Withdraw
 {
     using IntegrationTestingSample.Application.Boundaries.Withdraw;
+    using IntegrationTestingSample.WebApi.Models.V1.Withdraw;
     using Microsoft.AspNetCore.Mvc;
 
     public sealed class WithdrawPresenter : IOutputPort
@@ -20,12 +21,13 @@ namespace IntegrationTestingSample.WebApi.UseCases.V1.Withdraw
 
         public void Default(WithdrawOutput withdrawOutput)
         {
-            var withdrawResponse = new WithdrawResponse(
-                withdrawOutput.Transaction.Amount,
-                withdrawOutput.Transaction.Description,
-                withdrawOutput.Transaction.TransactionDate,
-                withdrawOutput.UpdatedBalance
-            );
+            var withdrawResponse = new WithdrawResponse
+            {
+                Amount = withdrawOutput.Transaction.Amount,
+                Description = withdrawOutput.Transaction.Description,
+                TransactionDate = withdrawOutput.Transaction.TransactionDate,
+                UpdateBalance = withdrawOutput.UpdatedBalance
+            };
             ViewModel = new ObjectResult(withdrawResponse);
         }
     }

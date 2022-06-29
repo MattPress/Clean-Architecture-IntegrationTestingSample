@@ -1,6 +1,7 @@
 namespace IntegrationTestingSample.WebApi.UseCases.V1.Deposit
 {
     using IntegrationTestingSample.Application.Boundaries.Deposit;
+    using IntegrationTestingSample.WebApi.Models.V1.Deposit;
     using Microsoft.AspNetCore.Mvc;
 
     public sealed class DepositPresenter : IOutputPort
@@ -20,12 +21,14 @@ namespace IntegrationTestingSample.WebApi.UseCases.V1.Deposit
 
         public void Default(DepositOutput depositOutput)
         {
-            var depositResponse = new DepositResponse(
-                depositOutput.Transaction.Amount,
-                depositOutput.Transaction.Description,
-                depositOutput.Transaction.TransactionDate,
-                depositOutput.UpdatedBalance
-            );
+            var depositResponse = new DepositResponse
+            {
+                Amount = depositOutput.Transaction.Amount,
+                Description = depositOutput.Transaction.Description,
+                TransactionDate = depositOutput.Transaction.TransactionDate,
+                UpdateBalance = depositOutput.UpdatedBalance
+            };
+                
             ViewModel = new ObjectResult(depositResponse);
         }
     }

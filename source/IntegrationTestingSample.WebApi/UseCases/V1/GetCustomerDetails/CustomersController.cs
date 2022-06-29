@@ -3,11 +3,12 @@ namespace IntegrationTestingSample.WebApi.UseCases.V1.GetCustomerDetails
     using System.ComponentModel.DataAnnotations;
     using System.Threading.Tasks;
     using IntegrationTestingSample.Application.Boundaries.GetCustomerDetails;
+    using IntegrationTestingSample.WebApi.Models.V1.GetCustomerDetails;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
 
     [ApiVersion("1.0")]
-    [Route("api/v1/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public sealed class CustomersController : ControllerBase
     {

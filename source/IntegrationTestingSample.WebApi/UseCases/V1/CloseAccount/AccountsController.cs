@@ -1,3 +1,5 @@
+using IntegrationTestingSample.WebApi.Models.V1.CloseAccount;
+
 namespace IntegrationTestingSample.WebApi.UseCases.V1.CloseAccount
 {
     using System.ComponentModel.DataAnnotations;
@@ -7,7 +9,7 @@ namespace IntegrationTestingSample.WebApi.UseCases.V1.CloseAccount
     using Microsoft.AspNetCore.Mvc;
 
     [ApiVersion("1.0")]
-    [Route("api/v1/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public sealed class AccountsController : ControllerBase
     {

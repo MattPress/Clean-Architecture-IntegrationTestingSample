@@ -2,7 +2,8 @@ namespace IntegrationTestingSample.WebApi.UseCases.V1.GetAccountDetails
 {
     using System.Collections.Generic;
     using IntegrationTestingSample.Application.Boundaries.GetAccountDetails;
-    using IntegrationTestingSample.WebApi.ViewModels;
+    using IntegrationTestingSample.WebApi.Models.V1.GetAccountDetails;
+    using IntegrationTestingSample.WebApi.Models.ViewModels;
     using Microsoft.AspNetCore.Mvc;
 
     public sealed class GetAccountDetailsPresenter : IOutputPort
@@ -26,18 +27,22 @@ namespace IntegrationTestingSample.WebApi.UseCases.V1.GetAccountDetails
 
             foreach (var item in getAccountDetailsOutput.Transactions)
             {
-                var transaction = new TransactionModel(
-                    item.Amount,
-                    item.Description,
-                    item.TransactionDate);
+                var transaction = new TransactionModel
+                {
+                    Amount = item.Amount,
+                    Description = item.Description,
+                    TransactionDate = item.TransactionDate
+                };
 
                 transactions.Add(transaction);
             }
 
-            var getAccountDetailsResponse = new GetAccountDetailsResponse(
-                getAccountDetailsOutput.AccountId,
-                getAccountDetailsOutput.CurrentBalance,
-                transactions);
+            var getAccountDetailsResponse = new GetAccountDetailsResponse
+            {
+                AccountId = getAccountDetailsOutput.AccountId,
+                CurrentBalance = getAccountDetailsOutput.CurrentBalance,
+                Transactions = transactions
+            };
 
             ViewModel = new OkObjectResult(getAccountDetailsResponse);
         }

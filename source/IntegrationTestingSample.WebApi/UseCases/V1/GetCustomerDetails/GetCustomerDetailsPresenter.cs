@@ -2,7 +2,7 @@ namespace IntegrationTestingSample.WebApi.UseCases.V1.GetCustomerDetails
 {
     using System.Collections.Generic;
     using IntegrationTestingSample.Application.Boundaries.GetCustomerDetails;
-    using IntegrationTestingSample.WebApi.ViewModels;
+    using IntegrationTestingSample.WebApi.Models.ViewModels;
     using Microsoft.AspNetCore.Mvc;
 
     public sealed class GetCustomerDetailsPresenter : IOutputPort
@@ -30,26 +30,32 @@ namespace IntegrationTestingSample.WebApi.UseCases.V1.GetCustomerDetails
 
                 foreach (var item in account.Transactions)
                 {
-                    var transaction = new TransactionModel(
-                        item.Amount,
-                        item.Description,
-                        item.TransactionDate);
+                    var transaction = new TransactionModel
+                    {
+                        Amount = item.Amount,
+                        Description = item.Description,
+                        TransactionDate = item.TransactionDate
+                    };
 
                     transactions.Add(transaction);
                 }
 
-                accounts.Add(new AccountDetailsModel(
-                    account.AccountId,
-                    account.CurrentBalance,
-                    transactions));
+                accounts.Add(new AccountDetailsModel
+                {
+                    AccountId = account.AccountId,
+                    CurrentBalance = account.CurrentBalance,
+                    Transactions = transactions
+                });
+                    
             }
 
-            var getCustomerDetailsResponse = new GetCustomerDetailsResponse(
-                getCustomerDetailsOutput.CustomerId,
-                getCustomerDetailsOutput.SSN,
-                getCustomerDetailsOutput.Name,
-                accounts
-            );
+            var getCustomerDetailsResponse = new GetCustomerDetailsResponse
+            {
+                CustomerId = getCustomerDetailsOutput.CustomerId,
+                SSN = getCustomerDetailsOutput.SSN,
+                Name = getCustomerDetailsOutput.Name,
+                Accounts = accounts
+            };
 
             ViewModel = new OkObjectResult(getCustomerDetailsResponse);
         }

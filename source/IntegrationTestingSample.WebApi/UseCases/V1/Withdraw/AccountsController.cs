@@ -4,11 +4,12 @@ namespace IntegrationTestingSample.WebApi.UseCases.V1.Withdraw
     using System.Threading.Tasks;
     using IntegrationTestingSample.Application.Boundaries.Withdraw;
     using IntegrationTestingSample.Domain.ValueObjects;
+    using IntegrationTestingSample.WebApi.Models.V1.Withdraw;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
 
     [ApiVersion("1.0")]
-    [Route("api/v1/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public sealed class AccountsController : ControllerBase
     {

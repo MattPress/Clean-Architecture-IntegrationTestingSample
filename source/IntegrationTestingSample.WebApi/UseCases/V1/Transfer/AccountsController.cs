@@ -5,13 +5,14 @@ namespace IntegrationTestingSample.WebApi.UseCases.V1.Transfer
     using IntegrationTestingSample.Application.Boundaries.Transfer;
     using IntegrationTestingSample.Domain.ValueObjects;
     using IntegrationTestingSample.WebApi.Extensions.FeatureFlags;
+    using IntegrationTestingSample.WebApi.Models.V1.Transfer;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.FeatureManagement.Mvc;
 
     [FeatureGate(Features.Transfer)]
     [ApiVersion("1.0")]
-    [Route("api/v1/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public sealed class AccountsController : ControllerBase
     {
